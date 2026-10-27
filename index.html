@@ -1,0 +1,627 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para mi amorcita ♡</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: #f5faff;
+    background:
+        radial-gradient(circle at 20% 20%, #285d91, transparent 38%),
+        radial-gradient(circle at 80% 80%, #48316f, transparent 38%),
+        linear-gradient(135deg, #040d20, #102e59, #080e25);
+    overflow-x: hidden;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    color: #d8f2ff;
+    animation: twinkle 2.5s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: .2;
+        transform: scale(.7) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.4) rotate(30deg);
+        text-shadow: 0 0 15px #8edbff;
+    }
+}
+
+.screen {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.login {
+    width: min(390px, 100%);
+    text-align: center;
+    padding: 32px 24px;
+    animation: appear 1s ease both;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(.94);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.moon {
+    width: 105px;
+    height: 105px;
+    margin: 0 auto 25px;
+    display: grid;
+    place-items: center;
+    font-size: 56px;
+    border-radius: 50%;
+    background: #c6eaff12;
+    border: 1px solid #bde7ff55;
+    box-shadow: 0 0 25px #76cfff30, 0 0 70px #76cfff20;
+    animation: moonFloat 3s ease-in-out infinite;
+}
+
+@keyframes moonFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+        box-shadow: 0 0 25px #76cfff30;
+    }
+    50% {
+        transform: translateY(-12px) rotate(5deg);
+        box-shadow: 0 0 45px #76cfff75;
+    }
+}
+
+.eyebrow {
+    color: #a9ddff;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: .7rem;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+.login h1 {
+    font-size: clamp(2.2rem, 8vw, 3.1rem);
+    line-height: 1.2;
+    margin: 14px 0;
+}
+
+.login h1 span {
+    color: #3fd9ff;
+    animation: pinkGlow 2.5s infinite alternate;
+}
+
+@keyframes pinkGlow {
+    from { text-shadow: 0 0 5px #b8ebff; }
+    to { text-shadow: 0 0 25px #8ff2ff; }
+}
+
+.login p {
+    color: #c7dff3;
+    font-size: .9rem;
+    line-height: 1.8;
+    margin: 12px 0;
+}
+
+#passwordForm {
+    margin-top: 25px;
+}
+
+input {
+    display: block;
+    width: 100%;
+    padding: 15px 17px;
+    margin: 0 0 14px;
+    border: 1px solid #8dd7ff80;
+    border-radius: 15px;
+    background: #081b35;
+    color: white;
+    font: inherit;
+    text-align: center;
+    outline: none;
+    transition: .3s;
+}
+
+input::placeholder {
+    color: #9abbd8;
+}
+
+input:focus {
+    border-color: #b9e8ff;
+    box-shadow: 0 0 22px #77caff50;
+    transform: scale(1.02);
+}
+
+button {
+    border: none;
+    border-radius: 15px;
+    padding: 14px 20px;
+    font: 600 .95rem 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.enter {
+    width: 100%;
+    color: #102746;
+    background: linear-gradient(110deg, #b9e8ff, #c8d8f5, #b9e8ff);
+    background-size: 200% auto;
+    animation: buttonShine 4s linear infinite;
+}
+
+@keyframes buttonShine {
+    to { background-position: 200% center; }
+}
+
+.enter:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0 30px #9bdcff75;
+}
+
+#error {
+    min-height: 24px;
+    margin-top: 12px;
+    color: #c1edff;
+    font-size: .82rem;
+}
+
+.hint {
+    font-size: .75rem !important;
+    color: #91b7d9 !important;
+    margin-top: 18px !important;
+}
+
+.floating-heart {
+    position: fixed;
+    bottom: -40px;
+    z-index: 0;
+    pointer-events: none;
+    animation: floatUp linear forwards;
+    opacity: 0;
+}
+
+@keyframes floatUp {
+    10% { opacity: .7; }
+    100% {
+        transform: translateY(-115vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+/* DEDICATORIA */
+#dedication {
+    display: none;
+    width: min(850px, 100%);
+    padding: 40px 18px 50px;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 9vw, 5rem);
+    line-height: 1.15;
+    margin: 18px 0;
+}
+
+.hero-title span {
+    color: #81cdff;
+}
+
+.subtitle {
+    color: #c9e3f8;
+    line-height: 1.9;
+    max-width: 620px;
+    margin: auto;
+}
+
+.heart {
+    font-size: 35px;
+    margin: 25px 0;
+    animation: heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.divider {
+    width: 90px;
+    height: 2px;
+    margin: 30px auto;
+    background: linear-gradient(90deg, transparent, #bfe8ff, transparent);
+}
+
+.letter {
+    max-width: 690px;
+    margin: auto;
+    text-align: left;
+    line-height: 2;
+    color: #e7f4ff;
+}
+
+.letter p {
+    margin-bottom: 18px;
+}
+
+.quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 4vw, 2rem);
+    line-height: 1.6;
+    color: #d6e4f7;
+    margin: 30px auto;
+    max-width: 650px;
+}
+
+.memories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 13px;
+    margin: 30px 0;
+}
+
+.memory {
+    border: 1px solid #8bc9f2;
+    border-radius: 18px;
+    padding: 22px 12px;
+    background: #0b2145;
+}
+
+.memory .emoji {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.memory strong {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.memory small {
+    color: #b6d5ee;
+    line-height: 1.7;
+}
+
+.signature {
+    margin-top: 35px;
+    color: #d5eaff;
+    line-height: 2;
+}
+
+.signature strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #d1f8ff;
+}
+
+.back {
+    margin-top: 25px;
+    background: transparent;
+    color: #c8e6ff;
+    border: 1px solid #7fbbe9;
+    font-size: .85rem;
+}
+
+footer {
+    margin-top: 35px;
+    font-size: .8rem;
+    color: #8fb4d7;
+}
+
+@media (max-width: 600px) {
+    .memories { grid-template-columns: 1fr; }
+    #dedication { padding: 30px 8px; }
+    .letter { font-size: .95rem; }
+    .login { padding: 25px 12px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<main class="screen">
+
+    <!-- PANTALLA DE CONTRASEÑA -->
+    <section class="login" id="login">
+
+        <div class="moon">💓</div>
+
+        <div class="eyebrow">✦ solo para ti ✦</div>
+
+        <h1>Mi <span>amorcita</span> ♡</h1>
+
+        <p>
+            Dos meses de nosotros... 💙
+            <br>
+            Me haz echo y me haces demasiado feliz amor
+        </p>
+
+        <form id="passwordForm">
+            <input
+                id="password"
+                type="password"
+                placeholder="🔒 Nuestra contraseña"
+                autocomplete="off"
+                required
+            >
+
+            <button class="enter" type="submit">
+                Abrir mi sorpresa ♡
+            </button>
+        </form>
+
+        <div id="error"></div>
+
+        <p class="hint">
+            Una pequeña sorpresa hecha para ti ❄️
+        </p>
+
+    </section>
+
+    <!-- CARTA DE LOS DOS MESES -->
+    <section id="dedication">
+
+        <div class="eyebrow">
+            26 de octubre · Nuestros 2 meses
+        </div>
+
+        <h1 class="hero-title">
+            Para mi <span>amorcita</span> ♡
+        </h1>
+
+        <p class="subtitle">
+            Dos meses contigo, y todavía me emociona
+            pensar en todo lo bonito que estamos construyendo.
+        </p>
+
+        <div class="heart">💙</div>
+        <div class="divider"></div>
+
+        <article class="letter">
+
+            <p>Mi amorcita:</p>
+
+            <p>
+                Hoy cumplimos dos meses y quería hacerte
+                alguito especial, aunque sea pequeñito, para
+                recordarte lo importante que eres para mí.
+                Gracias por cada momento, por las risas,
+                por las conversaciones y por todas esas
+                pequeñas cosas que hacen que estar contigo
+                sea diferente.
+            </p>
+
+            <p>
+                Sé que una relación no se trata solamente
+                de decir cosas bonitas. También se trata de
+                cuidar lo nuestro, escucharnos, aprender
+                de nuestros errores y demostrar con acciones
+                cuánto nos importamos. Yo quiero seguir
+                construyendo eso contigo, poquito a poquito
+                y con sinceridad.
+            </p>
+
+            <p>
+                Quiero que tengamos muchos más recuerdos,
+                que sigamos riéndonos por tonterías,
+                apoyándonos cuando algo sea difícil y
+                celebrando juntos las cosas bonitas.
+                No necesito que todo sea perfecto; quiero
+                que podamos ser sinceros, comprendernos
+                y elegir amarnos cada día.
+            </p>
+
+            <p>
+                Estos dos meses son una parte pequeña de
+                nuestra historia, pero para mí tienen un
+                lugar muy especial. Me hace feliz el que
+                seas tú la persona con quien comparto todo
+                esto.
+            </p>
+
+        </article>
+
+        <div class="quote">
+            “Si pudiera volver al principio,
+            volvería a elegir conocerte.”
+        </div>
+
+        <div class="memories">
+
+            <div class="memory">
+                <span class="emoji">❄️</span>
+                <strong>Nuestros momentos</strong>
+                <small>
+                    Cada recuerdo contigo tiene algo
+                    que lo hace especial.
+                </small>
+            </div>
+
+            <div class="memory">
+                <span class="emoji">💙</span>
+                <strong>Lo que cuidamos</strong>
+                <small>
+                    La confianza, el cariño y las ganas
+                    de entendernos.
+                </small>
+            </div>
+
+            <div class="memory">
+                <span class="emoji">💕</span>
+                <strong>Lo que viene</strong>
+                <small>
+                    Más historias, más risas y nuevos
+                    días juntos.
+                </small>
+            </div>
+
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="signature">
+            Felices dos meses, mi amorcita.
+            <br>
+            Gracias por formar parte de mi vida.
+            <strong>Te quiero muchísimo ♡</strong>
+        </div>
+
+        <button class="back" id="lockAgain" type="button">
+            Cerrar nuestra cartita 🔒
+        </button>
+
+        <footer>
+            Hecho con cariño, solo para ti ✧
+        </footer>
+
+    </section>
+
+</main>
+
+<script>
+
+// CAMBIA AQUÍ LA CONTRASEÑA
+const PASSWORD = "26/08/26";
+
+const form = document.getElementById("passwordForm");
+const input = document.getElementById("password");
+const error = document.getElementById("error");
+const login = document.getElementById("login");
+const dedication = document.getElementById("dedication");
+
+// COMPROBAR CONTRASEÑA
+form.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    if (
+        input.value.trim().toLowerCase() ===
+        PASSWORD.toLowerCase()
+    ) {
+
+        login.style.display = "none";
+        dedication.style.display = "block";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    } else {
+
+        error.textContent =
+            "Esa no es la contraseña";
+
+        input.value = "";
+        input.focus();
+
+    }
+
+});
+
+// VOLVER A CERRAR LA CARTA
+document.getElementById("lockAgain").addEventListener(
+    "click",
+    function() {
+
+        dedication.style.display = "none";
+        login.style.display = "block";
+
+        input.value = "";
+        error.textContent = "";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+);
+
+// ESTRELLAS BRILLANTES
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 55; i++) {
+
+    const star = document.createElement("span");
+
+    star.className = "star";
+    star.textContent = Math.random() > 0.5 ? "✦" : "·";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.fontSize = (10 + Math.random() * 13) + "px";
+    star.style.animationDelay = Math.random() * 3 + "s";
+
+    stars.appendChild(star);
+
+}
+
+// CORAZONES, COPITOS Y BRILLITOS FLOTANTES
+function createFloatingHeart() {
+
+    const heart = document.createElement("span");
+
+    heart.className = "floating-heart";
+
+    const symbols = ["♡", "💙", "❄", "✦", "💗"];
+
+    heart.textContent =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (14 + Math.random() * 20) + "px";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 10000);
+
+}
+
+setInterval(createFloatingHeart, 550);
+
+</script>
+
+</body>
+</html>
